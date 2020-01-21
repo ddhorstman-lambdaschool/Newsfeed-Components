@@ -87,7 +87,38 @@ const data = [
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
 ];
+/**
+ * 
+ * @param {string} _title 
+ * @param {string} _date 
+ * @param {Array} _paragraphs 
+ */
+function createArticle(_title, _date, _paragraphs){
+  const article = document.createElement('div');
+  article.classList.add('article');
 
+  const title = document.createElement('h2');
+  title.textContent=_title;
+
+  const date = document.createElement('p');
+  date.classList.add('date');
+  date.textContent = _date;
+
+  const paragraphs = _paragraphs.map(content => {
+    const paragraph = document.createElement('p');
+    paragraph.textContent = content;
+    return paragraph;
+  });
+
+  const expand = document.createElement('span');
+  expand.classList.add('expandButton');
+
+  article.append(title,date);
+  paragraphs.forEach(p => article.appendChild(p));
+  article.appendChild(expand);
+
+  return article;
+}
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
   <div class="article">
