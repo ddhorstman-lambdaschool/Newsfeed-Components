@@ -85,6 +85,13 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Donald Trump Declares Self King, Pre-Empts Impeachment Results',
+    date: 'Feb 14th, 2020',
+    firstParagraph: 'The latest news doesn\'t surprise anyone.',
+    secondParagraph: 'As king, he claims the royal right to grab any new brides by the p**sy on their wedding night.',
+    thirdParagraph: 'Republicans respond "This is normal, stop complaining so much. Obama did raise taxes after all".'
   }
 ];
 
