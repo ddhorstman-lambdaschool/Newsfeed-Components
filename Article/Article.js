@@ -130,11 +130,16 @@ function createArticle(_article){
   expand.classList.add('expandButton');
   expand.textContent="Show More";
   expand.addEventListener('click', (e) => {
-    e.target.textContent = e.target.textContent === "Show More" ? "Hide" : "Show More";
+    e.target.textContent = e.target.textContent === "Show More" ? "Less" : "Show More";
     article.classList.toggle('article-open');
   });
 
-  article.append(title,date);
+  const close = document.createElement('span');
+  close.classList.add('close');
+  close.textContent="Close";
+  close.addEventListener('click', () => article.classList.add('hidden'));
+
+  article.append(title,date, close);
   paragraphs.forEach(p => article.appendChild(p));
   article.appendChild(expand);
 
