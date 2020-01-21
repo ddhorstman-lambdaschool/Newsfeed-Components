@@ -87,13 +87,22 @@ const data = [
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
 ];
-/**
+
+const articles = document.querySelector('.articles');
+data.forEach(article=> articles.appendChild(createArticle(article)));
+
+/** Create and article module from data passed in.
  * 
- * @param {string} _title 
- * @param {string} _date 
- * @param {Array} _paragraphs 
+ * @param {Object} _article An article containing a title, date, 
+ * and three paragraphs: firstParagraph, secondParagraph, and thirdParagraph.
+ * 
+ * @returns {HTMLDivElement} A div containing all of the data.
  */
-function createArticle(_title, _date, _paragraphs){
+function createArticle(_article){
+  const _title = _article.title;
+  const _date = _article.date;
+  const _paragraphs = new Array(_article.firstParagraph,_article.secondParagraph,_article.thirdParagraph);
+
   const article = document.createElement('div');
   article.classList.add('article');
 
@@ -112,6 +121,11 @@ function createArticle(_title, _date, _paragraphs){
 
   const expand = document.createElement('span');
   expand.classList.add('expandButton');
+  expand.textContent="Show More";
+  expand.addEventListener('click', (e) => {
+    e.target.textContent = e.target.textContent === "Show More" ? "Hide" : "Show More";
+    article.classList.toggle('article-open');
+  });
 
   article.append(title,date);
   paragraphs.forEach(p => article.appendChild(p));
