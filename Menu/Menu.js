@@ -8,7 +8,30 @@ let menuItems = [
   'Music',
   'Log Out'
 ];
+/**Create a menu component based on a list of items.
+ * 
+ * @param {Array} _data The list of menu items
+ * 
+ * @returns {HTMLDivElement} A div containing the formatted menu.
+ */
+function createMenuComponent(_data){
+  const menu = document.createElement('div');
+  menu.classList.add('menu');
 
+  const list = document.createElement('ul');
+
+  const listItems = _data.map(item => {
+    const li = document.createElement('li');
+    li.textContent = item;
+    return li;
+  });
+
+  menu.appendChild(list);
+
+  listItems.forEach(item => list.appendChild(item));
+
+  return menu;
+}
 /* 
 
   Step 1: Write a function that will create a menu component as seen below:
