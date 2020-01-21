@@ -14,6 +14,11 @@ let menuItems = [
  * 
  * @returns {HTMLDivElement} A div containing the formatted menu.
  */
+document.querySelector('.header').appendChild(createMenuComponent(menuItems));
+
+document.querySelector('.menu-button').addEventListener('click', 
+  () => document.querySelector('.menu').classList.toggle('menu--open'));
+
 function createMenuComponent(_data){
   const menu = document.createElement('div');
   menu.classList.add('menu');
