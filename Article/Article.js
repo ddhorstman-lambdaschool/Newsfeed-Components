@@ -85,9 +85,66 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Donald Trump Declares Self King, Pre-Empts Impeachment Results',
+    date: 'Feb 14th, 2020',
+    firstParagraph: 'The latest news doesn\'t surprise anyone.',
+    secondParagraph: 'As king, he claims the royal right to grab any new brides by the p**sy on their wedding night.',
+    thirdParagraph: 'Republicans respond "This is normal, stop complaining so much. Obama did raise taxes after all".'
   }
 ];
 
+const articles = document.querySelector('.articles');
+data.forEach(article=> articles.appendChild(createArticle(article)));
+
+/** Create and article module from data passed in.
+ * 
+ * @param {Object} _article An article containing a title, date, 
+ * and three paragraphs: firstParagraph, secondParagraph, and thirdParagraph.
+ * 
+ * @returns {HTMLDivElement} A div containing all of the data.
+ */
+function createArticle(_article){
+  const _title = _article.title;
+  const _date = _article.date;
+  const _paragraphs = new Array(_article.firstParagraph,_article.secondParagraph,_article.thirdParagraph);
+
+  const article = document.createElement('div');
+  article.classList.add('article');
+
+  const title = document.createElement('h2');
+  title.textContent=_title;
+
+  const date = document.createElement('p');
+  date.classList.add('date');
+  date.textContent = _date;
+
+  const paragraphs = _paragraphs.map(content => {
+    const paragraph = document.createElement('p');
+    paragraph.textContent = content;
+    return paragraph;
+  });
+
+  const expand = document.createElement('span');
+  expand.classList.add('expandButton');
+  expand.textContent="Show More";
+  expand.addEventListener('click', (e) => {
+    e.target.textContent = e.target.textContent === "Show More" ? "Less" : "Show More";
+    article.classList.toggle('article-open');
+  });
+
+  const close = document.createElement('span');
+  close.classList.add('close');
+  close.textContent="Close";
+  close.addEventListener('click', () => article.classList.add('hidden'));
+
+  article.append(title,date, close);
+  paragraphs.forEach(p => article.appendChild(p));
+  article.appendChild(expand);
+
+  return article;
+}
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
   <div class="article">
